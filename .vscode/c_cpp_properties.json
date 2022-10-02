@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/include/**"
+            ],
+            "defines": []
+        }
+    ],
+    "version": 4,
+    "configurationProvider": "ms-vscode.cpptools"
+}
