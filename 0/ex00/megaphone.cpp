@@ -4,10 +4,10 @@
 class Megaphone {
 private:
     int          _argc;
-    char const** _argv;
+    char const **_argv;
 
 public:
-    Megaphone( int argc, char const** argv ) : _argc( argc ), _argv( argv )
+    Megaphone( int argc, char const **argv ) : _argc( argc ), _argv( argv )
     {
         this->dispatch();
     };
@@ -16,10 +16,12 @@ public:
 
     void resolve( void ) const
     {
-        int rows = this->_argc - 1;
+        size_t len  = 0;
+        int    rows = this->_argc - 1;
 
         for ( int outer = 0; outer < rows; outer++ ) {
-            size_t len = strlen( this->_argv[outer + 1] );
+            len = strlen( this->_argv[outer + 1] );
+
             for ( int inner = 0; inner < len; inner++ )
                 putchar( std::toupper( this->_argv[outer + 1][inner] ) );
         }
@@ -36,4 +38,4 @@ public:
     }
 };
 
-int main( int argc, char const** argv ) { Megaphone megaphone( argc, argv ); }
+int main( int argc, char const **argv ) { Megaphone megaphone( argc, argv ); }
