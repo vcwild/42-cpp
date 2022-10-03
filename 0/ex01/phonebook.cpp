@@ -12,7 +12,7 @@ Contact::~Contact() {}
 
 Contact *PhoneBook::_search( int index ) { return &this->_contacts[index]; }
 
-void PhoneBook::_truncate( std::string *line )
+std::string PhoneBook::_truncate( std::string *line )
 {
     std::string newLine;
 
@@ -22,7 +22,7 @@ void PhoneBook::_truncate( std::string *line )
         newLine[9] = '.';
     }
 
-    *line = newLine;
+    return newLine;
 }
 
 /**
@@ -33,38 +33,60 @@ void PhoneBook::_truncate( std::string *line )
  */
 void PhoneBook::_show( Contact *contact )
 {
-    int   n = 10;
-    char *repr;
+    int n = 10;
 
-    this->_truncate( &contact->firstName );
-    this->_truncate( &contact->lastName );
-    this->_truncate( &contact->nickname );
+    if ( contact->firstName.empty() )
+        return;
 
-    std::cout << contact->index << std::right << std::setw( n ) << "|";
-    std::cout << contact->firstName << std::right << std::setw( n ) << "|";
-    std::cout << contact->lastName << std::right << std::setw( n ) << "|";
-    std::cout << contact->nickname << std::right << std::setw( n );
+    std::cout << std::setw( n ) << std::right << contact->index << "|";
+    std::cout << std::setw( n ) << std::right
+              << this->_truncate( &contact->firstName ) << "|";
+    std::cout << std::setw( n ) << std::right
+              << this->_truncate( &contact->lastName ) << "|";
+    std::cout << std::setw( n ) << std::right
+              << this->_truncate( &contact->nickname ) << "\n";
+}
+
+void PhoneBook::_showDetails( Contact *contact )
+{
+    if ( contact->firstName.empty() ) {
+        std::cout << "Sorry, this contact does not exist!" << std::endl;
+        return;
+    }
+    std::cout << "First name: " << contact->firstName << std::endl;
+    std::cout << "Last name: " << contact->lastName << std::endl;
+    std::cout << "Phone number: " << contact->number << std::endl;
+    std::cout << "Nickname: " << contact->nickname << std::endl;
+    std::cout << "Darkest secret: " << contact->darkestSecret << std::endl;
 }
 
 int PhoneBook::search( void )
 {
-    char tempIndex[MAX_BUFFER_SIZE];
-    int  index = 0;
+    std::string tempIndex;
+    Contact    *contact = NULL;
+    int         index   = 0;
 
-    std::cout << "What index you want to search? ";
-    std::cin >> tempIndex;
-    index = atoi( tempIndex );
+    std::cout << "Available contacts:" << std::endl;
 
-    while ( index > 8 || index < 0 ) {
-        std::cout << "Invalid index (0 - 8): ";
-        std::cin >> tempIndex;
-        index = atoi( tempIndex );
+    for ( int i = 0; i < 8; i++ ) {
+        contact        = this->_search( i );
+        contact->index = i;
+        this->_show( contact );
     }
 
-    Contact *contact  = this->_search( index );
-    contact->index[0] = tempIndex[0];
-    contact->index[1] = tempIndex[1];
-    this->_show( contact );
+    std::cout << "Which index you want to search? ";
+    std::getline( std::cin, tempIndex );
+    index = atoi( tempIndex.c_str() );
+
+    while ( index > 7 || index < 0 ) {
+        std::cout << "Invalid index (0 - 7): ";
+        std::getline( std::cin, tempIndex );
+        index = atoi( tempIndex.c_str() );
+    }
+
+    contact = this->_search( index );
+    this->_showDetails( contact );
+
     return 0;
 }
 
@@ -79,7 +101,7 @@ void PhoneBook::_add( Contact *contact )
     this->_contacts[PhoneBook::_contactIndex] = *contact;
 
     PhoneBook::_contactIndex += 1;
-    if ( PhoneBook::_contactIndex > 8 )
+    if ( PhoneBook::_contactIndex > 7 )
         PhoneBook::_contactIndex = 0;
 }
 
@@ -93,6 +115,7 @@ int PhoneBook::add( void )
     parseFromCin( "Contact number: ", &contact.number );
     parseFromCin( "Contact darkest secret: ", &contact.darkestSecret );
     this->_add( &contact );
+
     return 0;
 }
 
@@ -102,9 +125,9 @@ int PhoneBook::handleAction( std::string *action )
 {
     if ( action->compare( "ADD" ) == 0 )
         return this->add();
-    if ( action->compare( "EXIT" ) == 0 )
+    else if ( action->compare( "EXIT" ) == 0 )
         return this->exit();
-    if ( action->compare( "SEARCH" ) == 0 )
+    else if ( action->compare( "SEARCH" ) == 0 )
         return this->search();
     return 0;
 }
@@ -118,6 +141,6 @@ void PhoneBook::run( void )
         std::getline( std::cin, action );
 
         if ( this->handleAction( &action ) )
-            break;
+            return;
     }
 }

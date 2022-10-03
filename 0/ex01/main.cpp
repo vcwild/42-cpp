@@ -2,7 +2,6 @@
 
 int main( void )
 {
-
     PhoneBook phoneBook;
 
     phoneBook.run();
