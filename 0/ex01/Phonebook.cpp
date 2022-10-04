@@ -1,14 +1,11 @@
 #include "phonebook.hpp"
+#include "contact.hpp"
 
 int PhoneBook::_contactIndex = 0;
 
 PhoneBook::PhoneBook() {}
 
 PhoneBook::~PhoneBook() {}
-
-Contact::Contact() {}
-
-Contact::~Contact() {}
 
 Contact *PhoneBook::_search( int index ) { return &this->_contacts[index]; }
 
@@ -90,12 +87,6 @@ int PhoneBook::search( void )
     return 0;
 }
 
-void parseFromCin( char const *message, std::string *buffer )
-{
-    std::cout << message;
-    std::getline( std::cin, *buffer );
-}
-
 void PhoneBook::_add( Contact *contact )
 {
     this->_contacts[PhoneBook::_contactIndex] = *contact;
@@ -103,6 +94,12 @@ void PhoneBook::_add( Contact *contact )
     PhoneBook::_contactIndex += 1;
     if ( PhoneBook::_contactIndex > 7 )
         PhoneBook::_contactIndex = 0;
+}
+
+static void parseFromCin( char const *message, std::string *buffer )
+{
+    std::cout << message;
+    std::getline( std::cin, *buffer );
 }
 
 int PhoneBook::add( void )

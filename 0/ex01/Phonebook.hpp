@@ -6,19 +6,6 @@
 #include <stdlib.h>
 #include <string>
 
-class Contact {
-public:
-    std::string firstName;
-    std::string lastName;
-    std::string nickname;
-    std::string darkestSecret;
-    int         index;
-    std::string number;
-
-    Contact();
-    ~Contact();
-};
-
 class PhoneBook {
 private:
     Contact    _contacts[8];
