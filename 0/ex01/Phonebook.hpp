@@ -1,6 +1,7 @@
-#ifndef PHONEBOOK_H
-#define PHONEBOOK_H
+#ifndef __PHONEBOOK_H__
+#define __PHONEBOOK_H__
 
+#include "Contact.hpp"
 #include <iomanip>
 #include <iostream>
 #include <stdlib.h>

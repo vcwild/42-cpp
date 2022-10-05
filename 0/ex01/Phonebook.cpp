@@ -1,5 +1,4 @@
-#include "phonebook.hpp"
-#include "contact.hpp"
+#include "Phonebook.hpp"
 
 int PhoneBook::_contactIndex = 0;
 

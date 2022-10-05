@@ -1,13 +1,23 @@
-.SUFFIXES: .o .cpp
+#### SETTINGS ####
 
 NAME = phonebook
-FILES =
-CFLAGS = -Wall -Wextra -Werror  -std=c++98
+
+CC = g++
+CFLAGS = -Wall -Wextra -Werror -std=c++98
+
+FILES = Contact.cpp Phonebook.cpp
+HEADERS = Contact.hpp Phonebook.hpp
+
+.SUFFIXES: .o .cpp .hpp
+
+.PHONY: all clean fclean re
+
+#### RULES ####
 
 all: $(NAME)
 
-$(NAME): $(NAME).cpp $(NAME).hpp main.cpp
-	@g++ $(CFLAGS) -o $(NAME) $^
+$(NAME): $(FILES) $(HEADERS) main.cpp
+	@$(CC) $(CFLAGS) -o $(NAME) $^
 
 clean:
 	@rm -f $(NAME)
@@ -15,4 +25,3 @@ clean:
 fclean: clean
 
 re: fclean all
-
