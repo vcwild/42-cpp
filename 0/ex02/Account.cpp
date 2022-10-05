@@ -2,10 +2,8 @@
 #include <ctime>
 #include <iostream>
 
-int Account::_nbAccounts         = 0;
-int Account::_totalAmount        = 0;
-int Account::_totalNbDeposits    = 0;
-int Account::_totalNbWithdrawals = 0;
+int Account::_nbAccounts = 0, Account::_totalAmount = 0,
+    Account::_totalNbDeposits = 0, Account::_totalNbWithdrawals = 0;
 
 Account::Account( int initial_deposit )
 {
