@@ -16,7 +16,7 @@ HEADERS = Zombie.hpp
 
 all: $(NAME)
 
-$(NAME): $(FILES) $(HEADERS) tests.cpp
+$(NAME): $(FILES) $(HEADERS) main.cpp
 	@$(CC) $(CFLAGS) $^ -o $(NAME)
 
 clean:
