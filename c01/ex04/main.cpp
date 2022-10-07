@@ -4,7 +4,7 @@
 int main( int argc, char *argv[] )
 {
     if ( argc != 4 ) {
-        std::cout << "Usage: ./nosed <filename> <word> <replacement-word>"
+        std::cerr << "Usage: ./nosed <filename> <word> <replacement-word>"
                   << std::endl;
         return 1;
     }
