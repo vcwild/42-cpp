@@ -2,6 +2,8 @@
 #include <cstdlib>
 #include <iostream>
 
+#define MAX_ITER_NUMBER 5
+
 Harl::Harl() {}
 
 Harl::~Harl() {}
@@ -24,11 +26,15 @@ std::string _randomMessage( void )
 
 void Harl::_dispatch( std::string level )
 {
-    void ( Harl::*handle[4] )( void )
-        = { &Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error };
-    std::string loggingLevels[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
+    void ( Harl::*handle[MAX_ITER_NUMBER] )( void ) = { &Harl::_debug,
+        &Harl::_info,
+        &Harl::_warning,
+        &Harl::_error,
+        &Harl::_none };
+    std::string loggingLevels[]
+        = { "DEBUG", "INFO", "WARNING", "ERROR", "NONE" };
 
-    for ( int i = 0; i < 4; i++ ) {
+    for ( int i = 0; i < MAX_ITER_NUMBER; i++ ) {
         if ( level == loggingLevels[i] ) {
             ( this->*handle[i] )();
             std::cout << _randomMessage() << "\033[0m" << std::endl;
@@ -41,16 +47,16 @@ int Harl::_translate( std::string level )
 {
     std::string levels[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
 
-    for ( int i = 0; i < 4; i++ ) {
+    for ( int i = 0; i < MAX_ITER_NUMBER - 1; i++ ) {
         if ( levels[i] == level )
             return i - 1;
     }
-    return 4;
+    return 3;
 }
 
 void Harl::_filter( int level )
 {
-    while ( ++level < 4 ) {
+    while ( ++level < MAX_ITER_NUMBER ) {
         switch ( level ) {
         case 0:
             this->_dispatch( "DEBUG" );
@@ -64,7 +70,7 @@ void Harl::_filter( int level )
         case 3:
             this->_dispatch( "ERROR" );
             break;
-        default:
+        case 4:
             this->_dispatch( "NONE" );
             break;
         }
