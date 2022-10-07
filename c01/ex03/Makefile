@@ -3,7 +3,7 @@
 NAME = battle
 
 CC = g++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 FILES = HumanA.cpp HumanB.cpp Weapon.cpp
 HEADERS = HumanA.hpp HumanB.hpp Weapon.hpp
