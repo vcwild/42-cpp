@@ -1,6 +1,6 @@
 #### SETTINGS ####
 
-NAME = claptrap
+NAME = scavtrap
 
 CC = g++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
