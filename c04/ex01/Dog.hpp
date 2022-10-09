@@ -7,6 +7,7 @@ class Dog : public Animal {
 
 public:
     Dog();
+    Dog( Dog const &instance );
     virtual ~Dog();
 
     Dog &operator=( Dog const &rhs );

@@ -12,7 +12,8 @@ Animal::~Animal() { delete _brain; }
 
 Animal &Animal::operator=( Animal const &rhs )
 {
-    this->_type = rhs.getType();
+    this->_type  = rhs.getType();
+    this->_brain = new Brain();
     return *this;
 }
 
@@ -27,3 +28,15 @@ void Animal::makeSound() const
 }
 
 Brain &Animal::getBrain() const { return *this->_brain; }
+
+void Animal::printBrainAddress() const
+{
+    std::cout << this->getType() << " brain address: " << &this->_brain
+              << std::endl;
+}
+
+void Animal::printIdea( int index ) const
+{
+    std::cout << this->getType() << " idea: " << this->_brain->getIdea( index )
+              << std::endl;
+}

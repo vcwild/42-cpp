@@ -3,19 +3,17 @@
 
 Brain::Brain()
 {
-    std::string animalNames[] = {
-        "Dog",
-        "Cat",
-        "Horse",
-        "Cow",
-        "Chicken",
-        "Pig",
-        "Sheep",
-        "Goat",
+    std::string activities[6] = {
+        "sleep",
+        "eat",
+        "play",
+        "run",
+        "fight",
+        "hunt",
     };
 
     for ( int i = 0; i < 100; i++ )
-        this->ideas[i] = animalNames[rand() % 8];
+        this->ideas[i] = activities[rand() % 6];
 }
 
 Brain::Brain( const Brain &src ) { *this = src; }

@@ -13,7 +13,8 @@ Cat::~Cat() { delete this->_brain; }
 
 Cat &Cat::operator=( Cat const &rhs )
 {
-    this->_type = rhs.getType();
+    this->_type  = rhs.getType();
+    this->_brain = new Brain();
     return *this;
 }
 
