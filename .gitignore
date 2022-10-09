@@ -32,3 +32,6 @@
 *.app
 
 *.pdf
+
+# Vscode
+settings.json
