@@ -18,6 +18,7 @@ public:
 
 private:
     std::string  _name;
+    std::string  _type;
     unsigned int _hp;
     unsigned int _energy;
     unsigned int _damage;
