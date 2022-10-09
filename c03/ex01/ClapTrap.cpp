@@ -39,6 +39,18 @@ ClapTrap::~ClapTrap()
     std::cout << this->_type << " destructor called" << std::endl;
 }
 
+void ClapTrap::takeDamage( unsigned int amount )
+{
+    if ( this->_damage <= 0 || this->_energy <= 0 || this->_hp <= 0 ) {
+        std::cout << "Cannot take damage!" << std::endl;
+        return;
+    }
+
+    std::cout << this->_type << " " << this->_name << " takes " << amount
+              << " points of damage!" << std::endl;
+    this->_hp -= amount;
+}
+
 void ClapTrap::attack( const std::string &target )
 {
 
