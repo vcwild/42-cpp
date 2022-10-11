@@ -24,7 +24,6 @@ private:
     AMateria   *_inventory[4];
     AMateria   *_stash[16];
 
-    static int _inventoryIndex;
     static int _stashIndex;
 };
 

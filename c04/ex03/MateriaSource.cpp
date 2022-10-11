@@ -3,11 +3,21 @@
 
 int MS::_materiaCount = 0;
 
-MS::MateriaSource() {}
+MS::MateriaSource()
+{
+    for ( int i = 0; i < 4; i++ ) {
+        this->_materia[i] = NULL;
+    }
+}
 
 MS::MateriaSource( MS const &src ) { *this = src; }
 
-MS::~MateriaSource() {}
+MS::~MateriaSource()
+{
+    for ( int i = 0; i < 4; i++ ) {
+        delete this->_materia[i];
+    }
+}
 
 MS &MS::MateriaSource::operator=( MS const &rhs )
 {

@@ -2,24 +2,37 @@
 #include "Character.hpp"
 #include <iostream>
 
-int Character::_inventoryIndex = 0;
-int Character::_stashIndex     = 0;
+int Character::_stashIndex = 0;
 
 Character::Character( std::string const &name ) : _name( name )
 {
     for ( int i = 0; i < 4; i++ ) {
         this->_inventory[i] = NULL;
     }
+
+    for ( int i = 0; i < 16; i++ ) {
+        this->_stash[i] = NULL;
+    }
 }
 
-Character::~Character() {}
+Character::~Character()
+{
+    for ( int i = 0; i < 4; i++ ) {
+        if ( this->_inventory[i] ) {
+            delete this->_inventory[i];
+        }
+    }
+    for ( int i = 0; i < 16; i++ ) {
+        delete this->_stash[i];
+    }
+}
 
 Character &Character::operator=( Character const &rhs )
 {
     AMateria *rhsMateria;
 
     this->_name = rhs.getName();
-    for ( int i = 0; i < Character::_inventoryIndex; i++ ) {
+    for ( int i = 0; i < 4; i++ ) {
         rhsMateria = rhs.getMateria( i );
         this->equip( rhsMateria->clone() );
     }
@@ -31,7 +44,7 @@ std::string const &Character::getName() const { return this->_name; }
 
 AMateria *Character::getMateria( int idx ) const
 {
-    if ( idx < 0 || idx >= Character::_inventoryIndex ) {
+    if ( idx < 0 || idx > 3 ) {
         return NULL;
     }
     return this->_inventory[idx];
@@ -39,9 +52,11 @@ AMateria *Character::getMateria( int idx ) const
 
 void Character::equip( AMateria *m )
 {
-    if ( Character::_inventoryIndex < 4 ) {
-        this->_inventory[Character::_inventoryIndex++] = m;
-        return;
+    for ( int i = 0; i < 4; i++ ) {
+        if ( this->_inventory[i] == NULL ) {
+            this->_inventory[i] = m;
+            return;
+        }
     }
 
     std::cerr << "Error: Inventory is full!" << std::endl;
@@ -57,7 +72,6 @@ void Character::unequip( int idx )
     if ( this->_inventory[idx] != NULL ) {
         this->_stash[this->_stashIndex++] = this->_inventory[idx];
         this->_inventory[idx]             = NULL;
-        Character::_inventoryIndex--;
         return;
     }
 

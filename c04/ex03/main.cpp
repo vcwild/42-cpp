@@ -2,6 +2,7 @@
 #include "Cure.hpp"
 #include "Ice.hpp"
 #include "MateriaSource.hpp"
+#include <iostream>
 
 int main()
 {
@@ -11,16 +12,31 @@ int main()
 
     ICharacter *me = new Character( "me" );
 
+    std::cout << "Let's create more Materia than what the inventory can hold:"
+              << std::endl;
     AMateria *tmp;
     tmp = src->createMateria( "ice" );
     me->equip( tmp );
     tmp = src->createMateria( "cure" );
+    me->equip( tmp );
+    tmp = src->createMateria( "cure" );
+    me->equip( tmp );
+    tmp = src->createMateria( "cure" );
+    me->equip( tmp );
+    tmp = src->createMateria( "cure" );
+    me->equip( tmp );
+
+    // Unequip materia from the second slot
+    me->unequip( 1 );
+    // Now try to equip anything. Should be added to the next available slot
     me->equip( tmp );
 
     ICharacter *bob = new Character( "bob" );
 
     me->use( 0, *bob );
     me->use( 1, *bob );
+    me->unequip( 0 );
+    me->use( 0, *bob );
 
     delete bob;
     delete me;

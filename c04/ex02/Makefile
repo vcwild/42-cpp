@@ -3,7 +3,7 @@
 NAME = animal
 
 CC = g++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -g
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow
 
 FILES = Animal.cpp Dog.cpp Cat.cpp Brain.cpp
 HEADERS = Animal.hpp Dog.hpp Cat.hpp Brain.hpp

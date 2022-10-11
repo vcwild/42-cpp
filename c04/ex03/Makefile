@@ -3,7 +3,7 @@
 NAME = amateria
 
 CC = g++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -g3
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow
 
 FILES = AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp main.cpp
 HEADERS = AMateria.hpp ICharacter.hpp Character.hpp Cure.hpp Ice.hpp IMateriaSource.hpp MateriaSource.hpp
