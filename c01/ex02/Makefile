@@ -2,7 +2,7 @@
 
 NAME = main
 
-CC = g++
+CC = clang++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 FILES = main.cpp
@@ -11,16 +11,19 @@ FILES = main.cpp
 
 .PHONY: all clean fclean re
 
+OBJS = $(FILES:.cpp=.o)
+
 #### RULES ####
 
 all: $(NAME)
 
-$(NAME): $(FILES)
-	@$(CC) $(CFLAGS) $^ -o $(NAME)
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) -o $(NAME) $^
 
 clean:
-	@rm -f $(NAME)
+	@rm -f $(OBJS)
 
 fclean: clean
+	@rm -f $(NAME)
 
 re: fclean all

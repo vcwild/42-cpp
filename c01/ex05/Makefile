@@ -2,7 +2,7 @@
 
 NAME = harl
 
-CC = g++
+CC = clang++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 FILES = Harl.cpp
@@ -12,16 +12,20 @@ HEADERS = Harl.hpp
 
 .PHONY: all clean fclean re
 
+FILES += main.cpp
+OBJS = $(FILES:.cpp=.o)
+
 #### RULES ####
 
 all: $(NAME)
 
-$(NAME): $(FILES) $(HEADERS) main.cpp
-	@$(CC) $(CFLAGS) $^ -o $(NAME)
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) -o $(NAME) $^
 
 clean:
-	@rm -f $(NAME)
+	@rm -f $(OBJS)
 
 fclean: clean
+	@rm -f $(NAME)
 
 re: fclean all

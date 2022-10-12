@@ -2,10 +2,10 @@
 
 NAME = phonebook
 
-CC = g++
+CC = clang++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-FILES = Contact.cpp Phonebook.cpp
+FILES = Contact.cpp Phonebook.cpp main.cpp
 HEADERS = Contact.hpp Phonebook.hpp
 
 .SUFFIXES: .o .cpp .hpp
@@ -16,12 +16,13 @@ HEADERS = Contact.hpp Phonebook.hpp
 
 all: $(NAME)
 
-$(NAME): $(FILES) $(HEADERS) main.cpp
+$(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $^
 
 clean:
-	@rm -f $(NAME)
+	@rm -f $(OBJS)
 
 fclean: clean
+	@rm -f $(NAME)
 
 re: fclean all
