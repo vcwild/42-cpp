@@ -1,4 +1,35 @@
 #include "Bureaucrat.hpp"
+#include <cassert>
+
+void testConstructorCopy()
+{
+    Bureaucrat b1( "Bureaucrat1", 1 );
+    Bureaucrat b2( b1 );
+    assert( b1.getName() == b2.getName() );
+    assert( b1.getGrade() == b2.getGrade() );
+}
+
+void testConstructorAssignment()
+{
+    Bureaucrat b1( "Bureaucrat1", 1 );
+    Bureaucrat b2( "Bureaucrat2", 150 );
+    b2 = b1;
+    assert( b2.getGrade() == b1.getGrade() );
+}
+
+void testValidIncrement()
+{
+    Bureaucrat b1( "Bureaucrat1", 2 );
+    b1.incrementGrade();
+    assert( b1.getGrade() == 1 );
+}
+
+void testValidDecrement()
+{
+    Bureaucrat b1( "Bureaucrat1", 149 );
+    b1.decrementGrade();
+    assert( b1.getGrade() == 150 );
+}
 
 void testInstanceLowerBounds()
 {
@@ -51,9 +82,9 @@ void testDecrementToLowerBounds()
 void testCreateValidInstance()
 {
     try {
-        std::cout << "Trying to instantiate a valid Bureaucrat" << std::endl;
         Bureaucrat valid( "Valid", 42 );
-        std::cout << valid << std::endl;
+        assert( valid.getName() == "Valid" );
+        assert( valid.getGrade() == 42 );
     } catch ( std::exception &e ) {
         std::cout << e.what() << std::endl;
     }
@@ -76,8 +107,14 @@ int main()
               << std::endl;
     testDecrementToLowerBounds();
 
-    std::cout << "--- Testing a new instance with grade 42 ---" << std::endl;
     testCreateValidInstance();
 
+    testConstructorCopy();
+
+    testConstructorAssignment();
+
+    testValidIncrement();
+
+    testValidDecrement();
     return 0;
 }

@@ -3,7 +3,7 @@
 NAME = bureaucrat
 
 CC = clang++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -g3
 
 FILES = Bureaucrat.cpp
 
