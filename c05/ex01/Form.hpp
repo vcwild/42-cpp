@@ -31,7 +31,7 @@ public:
         virtual const char *what() const throw();
     };
 
-protected:
+private:
     std::string const _name;
     bool              _signed = false;
     int const         _gradeToSign;

@@ -56,6 +56,17 @@ void testCreateTooHighSignGrade()
     form.signForm( Bureaucrat( "Rodrigo", 27 ) );
 }
 
+void testCopyForm()
+{
+    Form form( "Generic", 25, 25 );
+    Form copy( form );
+    std::cout << copy << std::endl;
+    assert( copy.getName() == "Generic" );
+    assert( copy.getSigned() == false );
+    assert( copy.getGradeToSign() == 25 );
+    assert( copy.getGradeToExecute() == 25 );
+}
+
 int main()
 {
     testCreateValidInstance();
@@ -69,6 +80,8 @@ int main()
     testCreateTooHighExecuteGrade();
 
     testCreateTooHighSignGrade();
+
+    testCopyForm();
 
     return 0;
 }

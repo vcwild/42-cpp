@@ -32,16 +32,16 @@ Form::~Form() {}
 
 Form &Form::operator=( Form const &rhs )
 {
-    // if ( this != &rhs )
-    //{
-    // this->_value = rhs.getValue();
-    //}
+    *this = rhs;
     return *this;
 }
 
 std::ostream &operator<<( std::ostream &o, Form const &i )
 {
-    // o << "Value = " << i.getValue();
+    o << "Form " << i.getName() << " has a grade to sign of "
+      << i.getGradeToSign() << " and a grade to execute of "
+      << i.getGradeToExecute() << ". It is " << ( i.getSigned() ? "" : "not " )
+      << "signed." << std::endl;
     return o;
 }
 
