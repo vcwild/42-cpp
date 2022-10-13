@@ -1,0 +1,31 @@
+#### SETTINGS ####
+
+NAME = bureaucrat
+
+CC = clang++
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow
+
+FILES = Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp
+
+.SUFFIXES: .o .cpp .hpp
+
+.PHONY: all clean fclean re
+
+FILES += main.cpp
+OBJS = $(FILES:.cpp=.o)
+
+#### RULES ####
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) -o $(NAME) $^
+
+clean:
+	@rm -f $(OBJS)
+	@rm -f test_shrubbery
+
+fclean: clean
+	@rm -f $(NAME)
+
+re: fclean all
