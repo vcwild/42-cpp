@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-template<typename T> void _swap( T &first, T &second )
+template<typename T> void swap( T &first, T &second )
 {
     T temp;
 
