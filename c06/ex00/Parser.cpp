@@ -85,8 +85,7 @@ bool Parser::isFloat( std::string const &str )
 
 void Parser::castChar( char const *str )
 {
-    this->_charRepr = str[0];
-    std::cout << "casting char: " << this->_charRepr << std::endl;
+    this->_charRepr   = str[0];
     this->_intRepr    = static_cast<long int>( this->_charRepr );
     this->_floatRepr  = static_cast<float>( this->_charRepr );
     this->_doubleRepr = static_cast<double>( this->_charRepr );
@@ -99,7 +98,6 @@ void Parser::castInt( char const *str )
         || this->_intRepr < std::numeric_limits<int>::min() ) {
         throw Parser::OverflowException();
     }
-    std::cout << "casting int: " << this->_intRepr << std::endl;
     this->_charRepr   = static_cast<char>( this->_intRepr );
     this->_floatRepr  = static_cast<float>( this->_intRepr );
     this->_doubleRepr = static_cast<double>( this->_intRepr );
@@ -108,16 +106,14 @@ void Parser::castInt( char const *str )
 void Parser::castDouble( char const *str )
 {
     this->_doubleRepr = std::strtod( str, NULL );
-    std::cout << "casting double: " << this->_doubleRepr << std::endl;
-    this->_charRepr  = static_cast<char>( this->_doubleRepr );
-    this->_intRepr   = static_cast<long int>( this->_doubleRepr );
-    this->_floatRepr = static_cast<float>( this->_doubleRepr );
+    this->_charRepr   = static_cast<char>( this->_doubleRepr );
+    this->_intRepr    = static_cast<long int>( this->_doubleRepr );
+    this->_floatRepr  = static_cast<float>( this->_doubleRepr );
 }
 
 void Parser::castFloat( char const *str )
 {
-    this->_floatRepr = std::atof( str );
-    std::cout << "casting float: " << this->_floatRepr << std::endl;
+    this->_floatRepr  = std::atof( str );
     this->_charRepr   = static_cast<char>( this->_floatRepr );
     this->_intRepr    = static_cast<long int>( this->_floatRepr );
     this->_doubleRepr = static_cast<double>( this->_floatRepr );
@@ -222,7 +218,7 @@ void Parser::execute()
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-int Parser::getChar( void ) const { return this->_charRepr; }
+char Parser::getChar( void ) const { return this->_charRepr; }
 
 int Parser::getInt( void ) const { return this->_intRepr; }
 

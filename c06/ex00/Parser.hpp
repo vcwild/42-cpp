@@ -28,7 +28,7 @@ public:
 
     void execute();
 
-    int                getChar() const;
+    char               getChar() const;
     int                getInt() const;
     int                getFloat() const;
     int                getDouble() const;
