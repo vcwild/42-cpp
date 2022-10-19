@@ -3,7 +3,7 @@
 NAME = serialize
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -g3
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow
 
 FILES = Data.cpp
 
