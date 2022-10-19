@@ -68,15 +68,18 @@ void iterateSuit( std::string const &testName, MutantStack<T> &mutantStack )
     constIterate( mutantStack );
     reverseIterate( mutantStack );
     reverseConstIterate( mutantStack );
+
     T t = mutantStack.top();
     mutantStack.pop();
     iterate( mutantStack );
-    mutantStack.push( t );
-    iterate( mutantStack );
-    t = mutantStack.begin()[0];
 
     mutantStack.push( t );
     iterate( mutantStack );
+
+    t = mutantStack.begin()[0];
+    mutantStack.push( t );
+    iterate( mutantStack );
+
     std::cout << "Stack final size: \t\t" << mutantStack.size() << std::endl;
 }
 
