@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/19 20:11:07 by vwildner          #+#    #+#             */
+/*   Updated: 2022/10/19 20:11:08 by vwildner         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef EASYFIND_HPP
 #define EASYFIND_HPP
 
@@ -16,7 +28,8 @@ public:
 
 template<typename T> typename T::iterator easyfind( T &container, int number )
 {
-    typename T::iterator it = std::find( container.begin(), container.end(), number );
+    typename T::iterator it
+        = std::find( container.begin(), container.end(), number );
 
     if ( it == container.end() )
         throw ValueNotFoundException();
@@ -24,8 +37,8 @@ template<typename T> typename T::iterator easyfind( T &container, int number )
     return it;
 };
 
-template<typename kT, typename vT>
-typename std::map<kT, vT>::iterator easyfind( std::map<kT, vT> &container, int number )
+template<typename kT, typename vT> typename std::map<kT, vT>::iterator easyfind(
+    std::map<kT, vT> &container, int number )
 {
     typename std::map<kT, vT>::iterator it = container.begin();
 
