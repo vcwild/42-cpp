@@ -2,7 +2,7 @@
 
 NAME = convert
 
-CC = clang++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -g3
 
 FILES = Base.cpp Derived.cpp

@@ -2,8 +2,8 @@
 
 NAME = zombie
 
-CC = clang++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CC = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 FILES = Zombie.cpp zombieHorde.cpp main.cpp
 HEADERS = Zombie.hpp

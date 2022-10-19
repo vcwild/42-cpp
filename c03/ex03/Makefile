@@ -2,7 +2,7 @@
 
 NAME = diamondtrap
 
-CC = clang++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow
 
 FILES = ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp

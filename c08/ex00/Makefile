@@ -2,7 +2,7 @@
 
 NAME = find
 
-CC = clang++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -g3
 
 .SUFFIXES: .o .cpp .hpp .tpp

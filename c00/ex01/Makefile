@@ -2,7 +2,7 @@
 
 NAME = phonebook
 
-CC = clang++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 FILES = Contact.cpp Phonebook.cpp main.cpp

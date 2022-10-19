@@ -2,7 +2,7 @@
 
 NAME = battle
 
-CC = clang++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 FILES = HumanA.cpp HumanB.cpp Weapon.cpp main.cpp
