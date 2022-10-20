@@ -6,7 +6,7 @@
 #    By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 19:56:52 by vwildner          #+#    #+#              #
-#    Updated: 2022/10/19 19:56:53 by vwildner         ###   ########.fr        #
+#    Updated: 2022/10/19 21:38:14 by vwildner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 FILES = Contact.cpp Phonebook.cpp main.cpp
 HEADERS = Contact.hpp Phonebook.hpp
+
+OBJS = $(FILES:.cpp=.o)
 
 .SUFFIXES: .o .cpp .hpp
 
