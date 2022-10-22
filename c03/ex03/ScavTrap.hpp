@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 20:02:21 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:02:22 by vwildner         ###   ########.fr       */
+/*   Created: 2022/10/19 20:01:10 by vwildner          #+#    #+#             */
+/*   Updated: 2022/10/21 22:20:23 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 #define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
+#include <iostream>
+#include <string>
 
 class ScavTrap : virtual public ClapTrap {
 
 public:
     ScavTrap();
     ScavTrap( std::string name );
-    ScavTrap( ScavTrap const &instance );
     ~ScavTrap();
 
-    ScavTrap &operator=( ScavTrap const &right );
-
+    void attack( const std::string &target );
     void guardGate();
 };
 

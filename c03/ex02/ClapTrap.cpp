@@ -5,41 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 20:01:15 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:01:16 by vwildner         ###   ########.fr       */
+/*   Created: 2022/10/19 20:00:40 by vwildner          #+#    #+#             */
+/*   Updated: 2022/10/21 20:38:55 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include <limits.h>
 
-ClapTrap::ClapTrap( std::string name )
+ClapTrap::ClapTrap() :
+    _name( "ClapTrap" ), _hp( 10 ), _energy( 10 ), _damage( 0 )
 {
-
-    this->_name   = name;
-    this->_type   = "ClapTrap";
-    this->_hp     = 10;
-    this->_energy = 10;
-    this->_damage = 0;
-
-    std::cout << this->_type << " constructor called" << std::endl;
+    std::cout << "ClapTrap constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap( void )
+ClapTrap::ClapTrap( std::string name ) :
+    _name( name ), _hp( 10 ), _energy( 10 ), _damage( 0 )
 {
-    this->_name   = "ClapTrap";
-    this->_type   = "ClapTrap";
-    this->_hp     = 10;
-    this->_energy = 10;
-    this->_damage = 0;
-
-    std::cout << this->_type << " constructor called" << std::endl;
+    std::cout << "ClapTrap constructor called" << std::endl;
 }
 
 void ClapTrap::inspect()
 {
     std::cout << "---------------------------------" << std::endl;
-    std::cout << "You see " << this->_name << ", it is a " << this->_type
-              << std::endl;
+    std::cout << "You see " << this->_name << std::endl;
     std::cout << "HP: " << this->_hp << std::endl;
     std::cout << "ENERGY: " << this->_energy << std::endl;
     std::cout << "DAMAGE: " << this->_damage << std::endl;
@@ -48,46 +37,72 @@ void ClapTrap::inspect()
 
 ClapTrap::~ClapTrap()
 {
-    std::cout << this->_type << " destructor called" << std::endl;
+    std::cout << "ClapTrap destructor called" << std::endl;
 }
 
 void ClapTrap::takeDamage( unsigned int amount )
 {
-    if ( this->_damage <= 0 || this->_energy <= 0 || this->_hp <= 0 ) {
+
+    if ( !amount || !this->_hp ) {
         std::cout << "Cannot take damage!" << std::endl;
         return;
     }
 
-    std::cout << this->_type << " " << this->_name << " takes " << amount
-              << " points of damage!" << std::endl;
+    if ( amount > INT_MAX ) {
+        std::cout << "Damage amount is overflown" << std::endl;
+        return;
+    }
+
+    if ( amount > this->_hp ) {
+        std::cout << this->_name << " could only handle " << this->_hp
+                  << " points of damage!" << std::endl;
+        this->_hp = 0;
+        return;
+    }
+
     this->_hp -= amount;
+    std::cout << this->_name << " takes " << amount << " points of damage!"
+              << std::endl;
 }
 
 void ClapTrap::attack( const std::string &target )
 {
 
-    if ( this->_damage <= 0 || this->_energy <= 0 || this->_hp <= 0 ) {
+    if ( !this->_energy || !this->_hp ) {
         std::cout << "Cannot attack!" << std::endl;
         return;
     }
 
-    std::cout << this->_type << " " << this->_name << " attacks " << target
-              << ", causing " << this->_damage << " points of damage!"
-              << std::endl;
+    std::cout << this->_name << " attacks " << target << ", causing "
+              << this->_damage << " points of damage!" << std::endl;
     this->_energy--;
 }
 
 void ClapTrap::beRepaired( unsigned int amount )
 {
 
-    if ( amount <= 0 || this->_energy <= 0 ) {
+    if ( !amount || !this->_energy ) {
         std::cout << "cannot repair!" << std::endl;
         return;
     }
 
-    std::cout << this->_type << " " << this->_name << " repairs itself for "
-              << amount << " points!" << std::endl;
+    if ( amount > INT_MAX || ( amount + this->_hp ) > INT_MAX ) {
+        std::cout << "Repair amount is overflown" << std::endl;
+        return;
+    }
+
+    ( !this->_hp ) ? std::cout
+            << this->_name << " is brought back to life and repairs itself for "
+            << amount << " points!" << std::endl
+                   : std::cout << this->_name << " repairs itself for "
+                               << amount << " points!" << std::endl;
 
     this->_hp += amount;
     this->_energy--;
 }
+
+unsigned int const ClapTrap::getEnergy( void ) const { return this->_energy; }
+
+unsigned int const ClapTrap::getHp( void ) const { return this->_hp; }
+
+unsigned int const ClapTrap::getDamage( void ) const { return this->_damage; }

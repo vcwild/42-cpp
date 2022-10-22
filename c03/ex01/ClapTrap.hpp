@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:00:58 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:00:59 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/21 18:28:46 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,17 @@ public:
     void attack( const std::string &target );
     void takeDamage( unsigned int amount );
     void beRepaired( unsigned int amount );
-
     void inspect( void );
+
+    unsigned int const getEnergy( void ) const;
+    unsigned int const getHp( void ) const;
+    unsigned int const getDamage( void ) const;
 
 protected:
     std::string  _name;
     unsigned int _hp;
     unsigned int _energy;
     unsigned int _damage;
-    std::string  _type;
 };
 
 #endif

@@ -6,36 +6,47 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:02:07 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:02:12 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/21 22:34:10 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "DiamondTrap.hpp"
+#include <cassert>
 
 int main( void )
 {
-    DiamondTrap diamond( "Shiny" );
-    std::cout << "------------------ SETUP    -------------------" << std::endl;
-    diamond.inspect();
+    DiamondTrap em( "Emmanuel" );
+    FragTrap    ft( "FragTrap" );
+    ScavTrap    st( "ScavTrap" );
 
-    std::cout << "------------------ WHO AM I -------------------" << std::endl;
-    diamond.whoAmI();
+    assert( em.getHp() == ft.getHp() );
+    assert( em.getEnergy() == st.getEnergy() );
+    assert( em.getDamage() == ft.getDamage() );
 
-    std::cout << "------------------ ATTACK   -------------------" << std::endl;
-    diamond.attack( "Jade" );
+    em.whoAmI();
+    em.highFivesGuys();
 
-    std::cout << "------------------ DAMAGE   -------------------" << std::endl;
-    diamond.takeDamage( 10 );
+    em.guardGate();
+    em.attack( "Victor" );
+    assert( em.getEnergy() == st.getEnergy() - 1 );
 
-    std::cout << "------------------ REPAIR   -------------------" << std::endl;
-    diamond.beRepaired( 10 );
+    em.takeDamage( 10 );
+    assert( em.getHp() == ft.getHp() - 10 );
 
-    std::cout << "------------------ GUYS     -------------------" << std::endl;
-    diamond.highFivesGuys();
+    em.beRepaired( 10 );
+    assert( em.getHp() == ft.getHp() );
+    assert( em.getEnergy() == st.getEnergy() - 2 );
 
-    std::cout << "------------------ GATE     -------------------" << std::endl;
-    diamond.guardGate();
+    while ( em.getHp() > 0 ) {
+        em.takeDamage( 17 );
+    }
+    assert( em.getHp() == 0 );
+    assert( em.getEnergy() == st.getEnergy() - 2 );
 
-    std::cout << "------------------ TEARDOWN -------------------" << std::endl;
+    em.guardGate();
+    em.attack( "Victor" );
+    em.highFivesGuys();
+
+    return 0;
 }

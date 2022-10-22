@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:01:10 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:01:12 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/21 18:35:05 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ public:
     ScavTrap( std::string name );
     ~ScavTrap();
 
+    void attack( const std::string &target );
     void guardGate();
 };
 
