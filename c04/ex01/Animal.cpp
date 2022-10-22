@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:03:11 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:03:13 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/21 23:58:31 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ Animal::Animal()
     _brain      = new Brain();
 }
 
-Animal::Animal( Animal const &instance ) { *this = instance; }
+Animal::Animal( Animal const &instance )
+{
+    this->_type  = instance.getType();
+    this->_brain = new Brain( instance.getBrain() );
+}
 
 Animal::~Animal() { delete _brain; }
 

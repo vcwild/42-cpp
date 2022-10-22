@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 20:04:02 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:04:04 by vwildner         ###   ########.fr       */
+/*   Created: 2022/10/19 20:03:24 by vwildner          #+#    #+#             */
+/*   Updated: 2022/10/22 00:14:20 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@ public:
     Brain( const Brain &src );
     ~Brain();
 
-    std::string getIdea( int index ) const;
-
     std::string ideas[100];
 
-private:
+    std::string getIdea( int index ) const;
+    void        setIdea( int index, std::string idea );
 };
 
 #endif

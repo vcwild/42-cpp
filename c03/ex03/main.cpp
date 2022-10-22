@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:02:07 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/21 22:40:52 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/22 14:27:45 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int main( void )
     DiamondTrap em( "7x1" );
     FragTrap    ft( "FragTrap" );
     ScavTrap    st( "ScavTrap" );
+
+    em.inspect();
 
     assert( em.getHp() == ft.getHp() );
     assert( em.getEnergy() == st.getEnergy() );

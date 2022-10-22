@@ -6,11 +6,13 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 19:57:02 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 19:57:04 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/22 14:10:16 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
+#include <iostream>
+#include <string>
 
 int PhoneBook::_contactIndex = 0;
 
@@ -109,8 +111,13 @@ void PhoneBook::_add( Contact *contact )
 
 static void parseFromCin( char const *message, std::string *buffer )
 {
-    std::cout << message;
-    std::getline( std::cin, *buffer );
+
+    while ( !buffer->length() ) {
+        std::cout << message;
+        std::getline( std::cin, *buffer );
+        if ( buffer->empty() )
+            std::cout << "Field cannot be empty" << std::endl;
+    }
 }
 
 int PhoneBook::add( void )
@@ -149,6 +156,8 @@ void PhoneBook::run( void )
         std::getline( std::cin, action );
 
         if ( this->handleAction( &action ) )
+            return;
+        else if ( std::cin.eof() )
             return;
     }
 }

@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:04:18 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:04:22 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/22 00:15:37 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,24 @@ void checkCopies()
     dog2->printBrainAddress();
     dog1->printIdea( 0 );
     dog2->printIdea( 0 );
+
+    std::cout << "-------------- CHANGING COPY IDEA ------------" << std::endl;
+
+    dog2->getBrain().setIdea( 0, "think" );
+    dog2->printIdea( 0 );
+    dog1->printIdea( 0 );
+
+    std::cout << "-------------- CHECKING COPIES ---------------" << std::endl;
     cat1.printBrainAddress();
     cat2.printBrainAddress();
     cat1.printIdea( 0 );
     cat2.printIdea( 0 );
+
+    std::cout << "-------------- CHANGING COPY IDEA ------------" << std::endl;
+
+    cat2.getBrain().setIdea( 0, "think" );
+    cat2.printIdea( 0 );
+    cat1.printIdea( 0 );
 
     delete dog1;
     delete dog2;
