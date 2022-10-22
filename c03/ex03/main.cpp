@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:02:07 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/21 22:34:10 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/21 22:40:52 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int main( void )
 {
-    DiamondTrap em( "Emmanuel" );
+    DiamondTrap em( "7x1" );
     FragTrap    ft( "FragTrap" );
     ScavTrap    st( "ScavTrap" );
 
@@ -28,7 +28,7 @@ int main( void )
     em.highFivesGuys();
 
     em.guardGate();
-    em.attack( "Victor" );
+    em.attack( "Marvin" );
     assert( em.getEnergy() == st.getEnergy() - 1 );
 
     em.takeDamage( 10 );
@@ -39,13 +39,19 @@ int main( void )
     assert( em.getEnergy() == st.getEnergy() - 2 );
 
     while ( em.getHp() > 0 ) {
-        em.takeDamage( 17 );
+        em.takeDamage( 27 );
     }
     assert( em.getHp() == 0 );
     assert( em.getEnergy() == st.getEnergy() - 2 );
 
     em.guardGate();
-    em.attack( "Victor" );
+    em.attack( "Marvin" );
+    em.highFivesGuys();
+
+    em.beRepaired( 10 );
+    assert( em.getHp() == 10 );
+    em.guardGate();
+    em.attack( "Marvin" );
     em.highFivesGuys();
 
     return 0;
