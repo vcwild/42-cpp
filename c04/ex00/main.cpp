@@ -6,13 +6,14 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:02:51 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/21 23:12:18 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/23 12:22:52 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "WrongCat.hpp"
+#include <cassert>
 
 void testInstance()
 {
@@ -22,9 +23,9 @@ void testInstance()
     WrongAnimal wrongMeta;
     WrongCat    wrongCat;
 
-    std::cout << "Cat type is: " << cat.getType() << std::endl;
-    std::cout << "Dog type is: " << dog.getType() << std::endl;
-    std::cout << "WrongCat type is: " << wrongCat.getType() << std::endl;
+    assert( cat.getType() == "Cat" );
+    assert( dog.getType() == "Dog" );
+    assert( wrongCat.getType() == "WrongCat" );
 
     meta.makeSound();
     cat.makeSound();
@@ -42,9 +43,9 @@ void testPointers()
     const WrongAnimal *wrongMeta = new WrongAnimal();
     const WrongAnimal *wrongCat  = new WrongCat();
 
-    std::cout << "Cat type is: " << cat->getType() << std::endl;
-    std::cout << "Dog type is: " << dog->getType() << std::endl;
-    std::cout << "WrongCat type is: " << wrongCat->getType() << std::endl;
+    assert( cat->getType() == "Cat" );
+    assert( dog->getType() == "Dog" );
+    assert( wrongCat->getType() == "WrongCat" );
 
     meta->makeSound();
     cat->makeSound();
@@ -74,9 +75,9 @@ void testCopies()
     WrongAnimal wrongMetaCopy( wrongMeta );
     WrongCat    wrongCatCopy( wrongCat );
 
-    std::cout << "Cat type is: " << catCopy.getType() << std::endl;
-    std::cout << "Dog type is: " << dogCopy.getType() << std::endl;
-    std::cout << "WrongCat type is: " << wrongCatCopy.getType() << std::endl;
+    assert( catCopy.getType() == "Cat" );
+    assert( dogCopy.getType() == "Dog" );
+    assert( wrongCatCopy.getType() == "WrongCat" );
 
     metaCopy.makeSound();
     catCopy.makeSound();

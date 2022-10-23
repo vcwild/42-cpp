@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:07:15 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:07:16 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/23 13:58:58 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,19 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Intern::Intern() {}
+Intern::Intern() { std::cout << "Intern created" << std::endl; }
 
-Intern::Intern( const Intern &src ) { *this = src; }
+Intern::Intern( const Intern &src )
+{
+    *this = src;
+    std::cout << "Intern reference created" << std::endl;
+}
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Intern::~Intern() {}
+Intern::~Intern() { std::cout << "Intern destroyed" << std::endl; }
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------

@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:03:11 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/21 23:58:31 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/23 11:39:36 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,21 @@ Animal::Animal()
 {
     this->_type = "Animal";
     _brain      = new Brain();
+    std::cout << "Animal constructor called" << std::endl;
 }
 
 Animal::Animal( Animal const &instance )
 {
     this->_type  = instance.getType();
     this->_brain = new Brain( instance.getBrain() );
+    std::cout << "Animal constructor called" << std::endl;
 }
 
-Animal::~Animal() { delete _brain; }
+Animal::~Animal()
+{
+    delete _brain;
+    std::cout << "Animal destructor called" << std::endl;
+}
 
 Animal &Animal::operator=( Animal const &rhs )
 {

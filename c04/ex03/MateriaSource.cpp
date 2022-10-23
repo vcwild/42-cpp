@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:05:31 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:05:33 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/23 11:44:21 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,21 @@ MS::MateriaSource()
     for ( int i = 0; i < 4; i++ ) {
         this->_materia[i] = NULL;
     }
+    std::cout << "MateriaSource constructor called" << std::endl;
 }
 
-MS::MateriaSource( MS const &src ) { *this = src; }
+MS::MateriaSource( MS const &src )
+{
+    *this = src;
+    std::cout << "MateriaSource constructor called" << std::endl;
+}
 
 MS::~MateriaSource()
 {
     for ( int i = 0; i < 4; i++ ) {
         delete this->_materia[i];
     }
+    std::cout << "MateriaSource destructor called" << std::endl;
 }
 
 MS &MS::MateriaSource::operator=( MS const &rhs )

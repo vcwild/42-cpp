@@ -6,17 +6,25 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:02:26 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:02:27 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/23 11:37:45 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal() { this->_type = "Animal"; }
+Animal::Animal()
+{
+    this->_type = "Animal";
+    std::cout << "Animal constructor called" << std::endl;
+}
 
-Animal::Animal( Animal const &instance ) { *this = instance; }
+Animal::Animal( Animal const &instance )
+{
+    *this = instance;
+    std::cout << "Animal constructor called" << std::endl;
+}
 
-Animal::~Animal() {}
+Animal::~Animal() { std::cout << "Animal destructor called" << std::endl; }
 
 Animal &Animal::operator=( Animal const &rhs )
 {

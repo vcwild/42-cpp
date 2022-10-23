@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:06:49 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:06:50 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/23 13:57:38 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ RRF::RobotomyRequestForm( std::string const &target ) :
     _gradeToSign( Form::getGradeToSign() ),
     _gradeToExecute( Form::getGradeToExecute() )
 {
+    std::cout << "RobotomyRequestForm " << _name
+              << " created with grade to sign " << _gradeToSign
+              << " and grade to execute " << _gradeToExecute << std::endl;
 }
 
 RRF::RobotomyRequestForm( RRF const &src ) :
@@ -29,13 +32,19 @@ RRF::RobotomyRequestForm( RRF const &src ) :
     _gradeToSign( src._gradeToSign ), _gradeToExecute( src._gradeToExecute ),
     _target( src._target )
 {
+    std::cout << "RobotomyRequestForm reference " << _name
+              << " created with grade to sign " << _gradeToSign
+              << " and grade to execute " << _gradeToExecute << std::endl;
 }
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-RRF::~RobotomyRequestForm() {}
+RRF::~RobotomyRequestForm()
+{
+    std::cout << "RobotomyRequestForm " << _name << " destroyed" << std::endl;
+}
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------

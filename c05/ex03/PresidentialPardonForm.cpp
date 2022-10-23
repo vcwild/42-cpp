@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:08:58 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:08:58 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/23 13:59:21 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ PPF::PresidentialPardonForm( std::string const &target ) :
     _gradeToSign( Form::getGradeToSign() ),
     _gradeToExecute( Form::getGradeToExecute() )
 {
+    std::cout << "PresidentialPardonForm " << _name
+              << " created with grade to sign " << _gradeToSign
+              << " and grade to execute " << _gradeToExecute << std::endl;
 }
 
 PPF::PresidentialPardonForm( PPF const &src ) :
@@ -29,13 +32,20 @@ PPF::PresidentialPardonForm( PPF const &src ) :
     _gradeToSign( src._gradeToSign ), _gradeToExecute( src._gradeToExecute ),
     _target( src._target )
 {
+    std::cout << "PresidentialPardonForm reference " << _name
+              << " created with grade to sign " << _gradeToSign
+              << " and grade to execute " << _gradeToExecute << std::endl;
 }
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-PPF::~PresidentialPardonForm() {}
+PPF::~PresidentialPardonForm()
+{
+    std::cout << "PresidentialPardonForm " << _name << " destroyed"
+              << std::endl;
+}
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------

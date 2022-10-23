@@ -6,17 +6,25 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:02:32 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:02:34 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/23 11:37:56 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat() { this->_type = "Cat"; }
+Cat::Cat()
+{
+    this->_type = "Cat";
+    std::cout << "Cat constructor called" << std::endl;
+}
 
-Cat::Cat( Cat const &instance ) : Animal( instance ) { *this = instance; }
+Cat::Cat( Cat const &instance ) : Animal( instance )
+{
+    *this = instance;
+    std::cout << "Cat constructor called" << std::endl;
+}
 
-Cat::~Cat() {}
+Cat::~Cat() { std::cout << "Cat destructor called" << std::endl; }
 
 Cat &Cat::operator=( Cat const &rhs )
 {

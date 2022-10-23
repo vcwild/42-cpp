@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:04:35 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:04:37 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/23 11:42:55 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ Character::Character( std::string const &name ) : _name( name )
     for ( int i = 0; i < 16; i++ ) {
         this->_stash[i] = NULL;
     }
+    std::cout << "Character constructor called" << std::endl;
 }
 
 Character::~Character()
@@ -36,6 +37,7 @@ Character::~Character()
     for ( int i = 0; i < 16; i++ ) {
         delete this->_stash[i];
     }
+    std::cout << "Character destructor called" << std::endl;
 }
 
 Character &Character::operator=( Character const &rhs )

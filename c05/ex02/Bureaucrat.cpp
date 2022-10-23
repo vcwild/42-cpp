@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:06:21 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:06:22 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/23 13:56:34 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,25 @@ Bureaucrat::Bureaucrat( std::string const &name, int grade ) :
         throw Bureaucrat::GradeTooLowException();
     if ( grade < 1 )
         throw Bureaucrat::GradeTooHighException();
+    std::cout << "Bureaucrat " << _name << " created with grade " << _grade
+              << std::endl;
 }
 
 Bureaucrat::Bureaucrat( Bureaucrat const &src ) :
     _name( src._name ), _grade( src._grade )
 {
+    std::cout << "Bureaucrat reference " << _name << " created with grade "
+              << _grade << std::endl;
 }
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Bureaucrat::~Bureaucrat() {}
+Bureaucrat::~Bureaucrat()
+{
+    std::cout << "Bureaucrat " << _name << " destroyed" << std::endl;
+}
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------

@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:03:18 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/22 00:14:09 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/23 11:41:33 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,17 @@ Brain::Brain()
 
     for ( int i = 0; i < 100; i++ )
         this->ideas[i] = activities[rand() % 6];
+    std::cout << "Brain constructor called" << std::endl;
 }
 
 Brain::Brain( const Brain &src )
 {
     for ( int i = 0; i < 100; i++ )
         this->ideas[i] = src.ideas[i];
+    std::cout << "Brain constructor called" << std::endl;
 }
 
-Brain::~Brain() {}
+Brain::~Brain() { std::cout << "Brain destructor called" << std::endl; }
 
 std::string Brain::getIdea( int index ) const
 {

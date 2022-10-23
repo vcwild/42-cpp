@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:07:08 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:07:10 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/23 13:58:34 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,25 @@ Form::Form( std::string const &name, int gradeToSign, int gradeToExecute ) :
         throw Form::GradeTooLowException();
     if ( gradeToSign < 1 || gradeToExecute < 1 )
         throw Form::GradeTooHighException();
+    std::cout << "Form " << _name << " created with grade to sign "
+              << _gradeToSign << " and grade to execute " << _gradeToExecute
+              << std::endl;
 }
 
 Form::Form( const Form &src ) :
     _name( src._name ), _gradeToSign( src._gradeToSign ),
     _gradeToExecute( src._gradeToExecute )
 {
+    std::cout << "Form reference " << _name << " created with grade to sign "
+              << _gradeToSign << " and grade to execute " << _gradeToExecute
+              << std::endl;
 }
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Form::~Form() {}
+Form::~Form() { std::cout << "Form " << _name << " destroyed" << std::endl; }
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------

@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:06:55 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:06:57 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/23 13:57:53 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ SCF::ShrubberyCreationForm( std::string const &target ) :
     _gradeToSign( Form::getGradeToSign() ),
     _gradeToExecute( Form::getGradeToExecute() )
 {
+    std::cout << "ShrubberyCreationForm " << _name
+              << " created with grade to sign " << _gradeToSign
+              << " and grade to execute " << _gradeToExecute << std::endl;
 }
 
 SCF::ShrubberyCreationForm( SCF const &src ) :
@@ -47,13 +50,19 @@ SCF::ShrubberyCreationForm( SCF const &src ) :
     _gradeToSign( src._gradeToSign ), _gradeToExecute( src._gradeToExecute ),
     _target( src._target )
 {
+    std::cout << "ShrubberyCreationForm reference " << _name
+              << " created with grade to sign " << _gradeToSign
+              << " and grade to execute " << _gradeToExecute << std::endl;
 }
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-SCF::~ShrubberyCreationForm() {}
+SCF::~ShrubberyCreationForm()
+{
+    std::cout << "ShrubberyCreationForm " << _name << " destroyed" << std::endl;
+}
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
