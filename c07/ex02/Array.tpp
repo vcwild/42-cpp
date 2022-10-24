@@ -6,7 +6,7 @@
 /*   By: vwildner <vwildner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:10:57 by vwildner          #+#    #+#             */
-/*   Updated: 2022/10/19 20:10:58 by vwildner         ###   ########.fr       */
+/*   Updated: 2022/10/24 00:04:37 by vwildner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ template<typename T> Array<T> &Array<T>::operator=( Array<T> const &rhs )
 
 template<typename T> T &Array<T>::operator[]( size_t index )
 {
-    if ( index > this->size() )
-        throw Array::OutOfRangeException();
+    if ( index < this->size() )
+        return this->_elements[index];
 
-    return this->_elements[index];
+    throw Array::OutOfRangeException();
 }
 
 template<typename T> T const &Array<T>::operator[]( size_t index ) const
